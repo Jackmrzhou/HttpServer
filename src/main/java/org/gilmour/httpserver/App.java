@@ -15,7 +15,7 @@ public class App
     private static Logger logger = LoggerFactory.getLogger(App.class);
     public static void main( String[] args )
     {
-        IHttpServer httpServer = new HttpServer();
+        IHttpServer httpServer = new HttpServer("/Users/jackzhou/java_workspace/httpserver/src/main/resources/web");
         try {
             httpServer.Serve(8888);
         }catch (Exception e){

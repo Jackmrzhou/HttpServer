@@ -99,9 +99,6 @@ public class HttpParser {
                     bodyData[i] = (byte) byteVal;
                 }
             }
-            if (bufferedInputStream.read() != -1){
-                throw new Exception("expect eof");
-            }
             body = new HttpBody(bodyData);
         }
 
@@ -127,7 +124,7 @@ public class HttpParser {
                 isFirst = false;
                 continue;
             }
-            String [] parts = line.split(":", 2);
+            String [] parts = line.split(":[\\s]*", 2);
             result.set(parts[0], parts[1]);
         }
         return result;

@@ -40,6 +40,7 @@ public class HttpHandler implements Runnable{
             while ((sz = inputStream.read(buffer)) != -1)
                 outputStream.write(buffer, 0, sz);
             logger.debug("end of handler");
+            socket.close();
         }catch (Exception e){
             e.printStackTrace();
         }

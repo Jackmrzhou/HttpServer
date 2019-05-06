@@ -1,5 +1,7 @@
 package org.gilmour.httpserver.service;
 
+import org.gilmour.httpserver.conf.ServerConf;
+import org.gilmour.httpserver.dispatcher.HttpDispatcher;
 import org.gilmour.httpserver.handler.HttpHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,8 +16,9 @@ public class HttpServer implements IHttpServer {
     private Logger logger = LoggerFactory.getLogger(HttpServer.class);
     private ExecutorService threadPoolExecutor;
 
-    public HttpServer(){
-        threadPoolExecutor = Executors.newFixedThreadPool(4);
+    public HttpServer(String webRoot){
+        ServerConf.setWebRoot(webRoot);
+        threadPoolExecutor = Executors.newFixedThreadPool(20);
     }
 
 
